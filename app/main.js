@@ -1,6 +1,9 @@
-import Vue from 'nativescript-vue'
-import App from './components/App'
-import VueDevtools from 'nativescript-vue-devtools'
+import Vue from 'nativescript-vue';
+import BookList from './components/books/BookList';
+import VueDevtools from 'nativescript-vue-devtools';
+import RadListView from 'nativescript-ui-listview/vue';
+
+Vue.use(RadListView);
 
 if(TNS_ENV !== 'production') {
   Vue.use(VueDevtools)
@@ -13,5 +16,5 @@ Vue.config.silent = (TNS_ENV === 'production')
 
 new Vue({
   store,
-  render: h => h('frame', [h(App)])
+  render: h => h('frame', [h(BookList)])
 }).$start()
