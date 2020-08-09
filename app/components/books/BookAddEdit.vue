@@ -1,0 +1,56 @@
+<template>
+<Page>
+  <ActionBar>
+    <NavigationButton @tap="$navigateBack()" android.systemIcon="ic_menu_back"/>
+    <Label v-if="editMode" text="Edit book" horizontalAlignment="center"/>
+    <Label v-else text="Add new book" horizontalAlignment="center"/>
+  </ActionBar>
+  <DockLayout>
+    <StackLayout dock="top" height="90%">
+      <TextField v-model="bookData.id" hint="id"/>
+      <TextField v-model="bookData.title" hint="title"/>
+      <TextField v-model="bookData.author" hint="author"/>
+      <TextView v-model="bookData.description" hint="description"/>
+      <TextField text="ocena" hint="rate"/>
+      <TextField v-model="bookData.location" hint="location"/>
+    </StackLayout>
+    <StackLayout dock="bottom" row="1" orientation="horizontal">
+      <Button text="Zapisz" textWrap="true" width="95%" textAlignment="text" class="book-button" @tap="onAddEditButtonTap"></Button>
+    </StackLayout>
+  </DockLayout>
+</Page>
+</template>
+<script>
+import {mapActions} from 'vuex';
+import BookList from './BookList';
+
+export default {
+  name: 'book-add-edit',
+  props: {
+    book: Object
+  },
+  computed: {
+    bookData() {
+      console.log(this.book);
+      return this.book || {};
+    },
+    editMode() {
+      return !!this.book;
+    }
+  },
+  methods: {
+    ...mapActions({
+      addBook: 'addBook',
+      updateBook: 'updateBook'
+    }),
+    onAddEditButtonTap() {
+      if (this.editMode) {
+        this.updateBook(this.bookData);
+      } else {
+        this.addBook(this.bookData);
+      }
+      this.$navigateTo(BookList);
+    }
+  }
+}
+</script>

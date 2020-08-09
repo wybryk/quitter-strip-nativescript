@@ -12,18 +12,26 @@ export default new Vuex.Store({
         author: 'Author name',
         description: 'description',
         location: 'Location name',
-        state: [
+        state: 'BORROWED',
+        creationDate: '2018-01-01T09:47:03Z',
+        states: [
           {
-            creationDate: '2020-06-05 09:47:03',
-            endDate: '2020-06-06 17:12:58',
+            creationDate: '2020-06-05T09:47:03Z',
+            endDate: '2020-06-06T17:12:58Z',
             name: 'WANTED_TO_READ'
           },
           {
-            creationDate: '2020-06-05 09:47:03',
-            endDate: '',
+            creationDate: '2020-06-06T18:47:03Z',
+            endDate: '2020-07-01T18:47:03Z',
             name: 'BORROWED',
             personName: 'Name of person'
           },
+          {
+            creationDate: '2020-08-06T06:47:03Z',
+            endDate: '',
+            name: 'BORROWED',
+            personName: 'Name of person 2'
+          }
         ]
       },
       {
@@ -32,17 +40,18 @@ export default new Vuex.Store({
         author: 'Author name 2',
         description: 'description 2',
         location: 'Location name 2',
-        state: [
+        state: 'READED',
+        creationDate: '2020-06-01T09:47:03Z',
+        states: [
           {
-            creationDate: '2020-06-05 09:47:03',
-            endDate: '2020-06-06 17:12:58',
+            creationDate: '2020-06-05T09:47:03Z',
+            endDate: '2020-06-06T17:12:58Z',
             name: 'WANTED_TO_READ'
           },
           {
-            creationDate: '2020-06-05 09:47:03',
+            creationDate: '2021-06-05T09:47:03Z',
             endDate: '',
-            name: 'BORROWED',
-            personName: 'Name of person'
+            name: 'READED'
           }
         ]
       }

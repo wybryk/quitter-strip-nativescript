@@ -1,9 +1,24 @@
-// NativeScript core theme
-// @see https://docs.nativescript.org/ui/theme
 @import '~@nativescript/theme/core';
-@import '~@nativescript/theme/orange';
 
-// Override variables here
+.book-new-button {
+  background-color: #ffffff;
+  color: black;
+  width: 200px;
+  height: 125px;
+  font-size: 14px;;
+}
 
-// Global SCSS styling
-// @see https://docs.nativescript.org/ui/styling
+.book-item {
+  border-width: 5px;
+  border-color: #ccc;
+  border-style: solid;
+}
+
+.book-item-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.book-item-author {
+  font-size: 14px;
+}

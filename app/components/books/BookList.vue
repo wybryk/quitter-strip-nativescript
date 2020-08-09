@@ -3,22 +3,26 @@
   <ActionBar>
     <Label horizontalAlignment="center" text="Car List"/>
   </ActionBar>
-  
-  <AbsoluteLayout backgroundColor="#3c495e">
-    <Label class="message" :text="msg" col="0" row="0"/>
-    <RadListView for="book in books" @itemTap="onItemTap" style="height:75%">
-      <v-template>
-        <ListViewLinearLayout scrollDirection="Vertical" v-tkListViewLayout/>
-        <Book-item :book="book"></Book-item>
-      </v-template>
-    </RadListView>
-  </AbsoluteLayout>
+
+  <DockLayout>
+    <ScrollView dock="top" height="90%">
+      <RadListView for="book in books" @itemTap="onItemTap" width="100%">
+        <v-template>
+          <Book-item :book="book"></Book-item>
+        </v-template>
+      </RadListView>
+    </ScrollView>
+    <StackLayout dock="bottom">
+      <Button text="Nowy" textWrap="true" width="90%" textAlignment="text" class="book-new-button" @tap="onAddButtonTap"></Button>
+    </StackLayout>
+  </DockLayout>
 </Page>
 </template>
 <script>
 import {mapActions, mapGetters} from 'vuex';
 import BookItem from './BookItem';
 import Book from './Book';
+import BookAddEdit from './BookAddEdit';
 
 export default {
   name: 'books',
@@ -29,13 +33,13 @@ export default {
   },
   methods: {
     ...mapActions({
-      loadBooks: 'loadBooks',
-      addBook: 'addBook',
-      updateBook: 'updateBook'
+      loadBooks: 'loadBooks'
     }),
     onItemTap(event) {
-      console.log(event.item);
       this.$navigateTo(Book, {props: {book: event.item}});
+    },
+    onAddButtonTap() {
+      this.$navigateTo(BookAddEdit);
     }
   },
   components: {
@@ -43,6 +47,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-
-</style>
