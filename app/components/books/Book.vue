@@ -2,21 +2,51 @@
 <Page>
   <ActionBar>
     <NavigationButton @tap="$navigateBack()" android.systemIcon="ic_menu_back"/>
-    <Label :text="bookData.title" horizontalAlignment="center"/>
+    <Label text="Szczegóły książki" horizontalAlignment="center"/>
     <ActionItem @tap="onEditButtonTap" android.position="right" ios.position="right">
       <Label text="Edit" verticalAlignment="center"/>
     </ActionItem>
   </ActionBar>
   <ScrollView>
-    <StackLayout>
-      <Label :text="bookData.author"/>
-      <Label :text="bookData.description"/>
-      <Label text="ocena"/>
-      <Label :text="bookData.location"/>
-      <Label :text="bookData.name"/>
-      <Label :text="bookData.creationDate"/>
+    <StackLayout class="book-details">
+      <FlexboxLayout>
+        <StackLayout class="layout-half-width">
+          <Label text="Tytuł" class="label-light"/>
+          <Label :text="bookData.title" class="label-bold"/>
+        </StackLayout>
+        <StackLayout class="layout-half-width">
+          <Label text="Autor" class="label-light"/>
+          <Label :text="bookData.author" class="label-bold"/>
+        </StackLayout>
+      </FlexboxLayout>
+      <FlexboxLayout>
+        <StackLayout class="layout-half-width">
+          <Label text="Status" class="label-light"/>
+          <Label :text="book.state" class="label-bold"/>
+        </StackLayout>
+        <StackLayout class="layout-half-width">
+          <Label text="Data dodania" class="label-light"/>
+          <Label :text="formatDate(book.creationDate)" class="label-bold"/>
+        </StackLayout>
+      </FlexboxLayout>
       <StackLayout>
-        <Label :text="formatState(state)" v-for="state in bookData.states"/>
+        <Label text="Lokalizacja" class="label-light"/>
+        <Label :text="bookData.location" class="label-bold"/>
+      </StackLayout>
+      <StackLayout>
+        <Label text="Opis" class="label-light"/>
+        <Label :text="bookData.description" class="label-bold"/>
+      </StackLayout>
+      <StackLayout class=".book-details-status-list-container">
+        <Label text="Historia" class="label-bold"/>
+        <StackLayout v-for="state in bookData.states" class="book-details-status-list-item">
+          <Label :text="state.name"  class="label-bold"/>
+          <FlexboxLayout>
+            <Label :text="formatDate(state.creationDate)" class="label-light"/>
+            <Label v-if="!!state.endDate" text=" - " class="label-light"/>
+            <Label v-if="!!state.endDate" :text="formatDate(state.endDate)" class="label-light"/>
+          </FlexboxLayout>
+        </StackLayout>
       </StackLayout>
     </StackLayout>
   </ScrollView>
@@ -42,14 +72,17 @@ export default {
     findLastBookState() {
       return this.bookData.states.reduce((a, b) => {return new Date(a.creationDate) > new Date(b.creationDate) ? a : b});
     },
-    formatState(state) {
-      return `${state.name} ${this.getPersonName(state)} (${state.creationDate} - ${this.getEndDate(state.endDate)})`;
-    },
     getPersonName(state) {
       return state.name === 'BORROWED' ? state.personName : '';
     },
     getEndDate(endDate) {
       return !!endDate ? endDate : 'current';
+    },
+    formatDate(value) {
+       if (!value) {
+        return '';
+      }
+      return `${value.replace(/T/, ' ').replace(/\..+/, '').replace(/Z/, '')}`;
     }
   }
 }

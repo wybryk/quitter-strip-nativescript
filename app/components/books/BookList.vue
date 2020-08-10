@@ -1,7 +1,7 @@
 <template>
 <Page>
   <ActionBar>
-    <Label horizontalAlignment="center" text="Car List"/>
+    <Label horizontalAlignment="center" text="Book List"/>
   </ActionBar>
 
   <DockLayout>
@@ -13,7 +13,7 @@
       </RadListView>
     </ScrollView>
     <StackLayout dock="bottom">
-      <Button text="Nowy" textWrap="true" width="90%" textAlignment="text" class="book-new-button" @tap="onAddButtonTap"></Button>
+      <Button text="Nowy" textWrap="true" textAlignment="text" class="book-new-button" @tap="onAddButtonTap"></Button>
     </StackLayout>
   </DockLayout>
 </Page>

@@ -31,7 +31,6 @@ export default {
   },
   computed: {
     bookData() {
-      console.log(this.book);
       return this.book || {};
     },
     editMode() {
@@ -47,6 +46,8 @@ export default {
       if (this.editMode) {
         this.updateBook(this.bookData);
       } else {
+        this.bookData.creationDate = new Date().toISOString();
+        this.bookData.state = 'IN_LIBRARY';
         this.addBook(this.bookData);
       }
       this.$navigateTo(BookList);

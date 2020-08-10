@@ -3,22 +3,36 @@
 .book-new-button {
   background-color: #ffffff;
   color: black;
-  width: 200px;
-  height: 125px;
-  font-size: 14px;;
+  width: 90%;
+  height: 125;
+  font-size: 14;;
 }
 
-.book-item {
-  border-width: 5px;
-  border-color: #ccc;
-  border-style: solid;
+.book-details {
+  margin: 5;
+  padding: 15;
+  android-elevation: 5;
 }
 
-.book-item-title {
-  font-size: 16px;
+.label-light {
+  font-weight: 200;
+  font-size: 12;
+  color: #ddd;
+}
+
+.label-bold {
+  font-size: 14;
   font-weight: bold;
 }
 
-.book-item-author {
-  font-size: 14px;
+.layout-half-width {
+  width: 50%
+}
+
+.book-details-status-list-container {
+  margin-top: 20;
+}
+
+.book-details-status-list-item {
+  margin-left: 5;
 }

@@ -56,7 +56,7 @@ export default new Vuex.Store({
         ]
       }
     ],
-    bookStates: ['WANTED_TO_READ', 'READING_NOW', 'READED', 'BORROWED', 'REMOVED']
+    bookStates: ['IN_LIBRARY', 'WANTED_TO_READ', 'READING_NOW', 'READED', 'BORROWED', 'REMOVED']
   },
   mutations: {
     setBooks(state, books) {
