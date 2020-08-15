@@ -8,36 +8,34 @@
     </ActionItem>
   </ActionBar>
   <ScrollView>
-    <StackLayout class="book-details">
-      <FlexboxLayout>
-        <StackLayout class="layout-half-width">
-          <Label text="Tytuł" class="label-light"/>
-          <Label :text="bookData.title" class="label-bold"/>
+    <StackLayout>
+      <StackLayout class="book-details">
+        <FlexboxLayout>
+          <StackLayout class="layout-half-width">
+            <Label text="Tytuł" class="label-light"/>
+            <Label :text="bookData.title" class="label-bold"/>
+          </StackLayout>
+          <StackLayout class="layout-half-width">
+            <Label text="Autor" class="label-light"/>
+            <Label :text="bookData.author" class="label-bold"/>
+          </StackLayout>
+        </FlexboxLayout>
+        <FlexboxLayout>
+          <StackLayout class="layout-half-width">
+            <Label text="Status" class="label-light"/>
+            <Label :text="book.state" class="label-bold"/>
+          </StackLayout>
+          <StackLayout class="layout-half-width">
+            <Label text="Data dodania" class="label-light"/>
+            <Label :text="formatDate(book.creationDate)" class="label-bold"/>
+          </StackLayout>
+        </FlexboxLayout>
+        <StackLayout v-if="!!bookData.description">
+          <Label text="Opis" class="label-light"/>
+          <Label :text="bookData.description" class="label-bold"/>
         </StackLayout>
-        <StackLayout class="layout-half-width">
-          <Label text="Autor" class="label-light"/>
-          <Label :text="bookData.author" class="label-bold"/>
-        </StackLayout>
-      </FlexboxLayout>
-      <FlexboxLayout>
-        <StackLayout class="layout-half-width">
-          <Label text="Status" class="label-light"/>
-          <Label :text="book.state" class="label-bold"/>
-        </StackLayout>
-        <StackLayout class="layout-half-width">
-          <Label text="Data dodania" class="label-light"/>
-          <Label :text="formatDate(book.creationDate)" class="label-bold"/>
-        </StackLayout>
-      </FlexboxLayout>
-      <StackLayout>
-        <Label text="Lokalizacja" class="label-light"/>
-        <Label :text="bookData.location" class="label-bold"/>
       </StackLayout>
-      <StackLayout>
-        <Label text="Opis" class="label-light"/>
-        <Label :text="bookData.description" class="label-bold"/>
-      </StackLayout>
-      <StackLayout class=".book-details-status-list-container">
+      <StackLayout class="book-details book-details-status-list-container">
         <Label text="Historia" class="label-bold"/>
         <StackLayout v-for="state in bookData.states" class="book-details-status-list-item">
           <Label :text="state.name"  class="label-bold"/>

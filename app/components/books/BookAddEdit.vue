@@ -7,15 +7,33 @@
   </ActionBar>
   <DockLayout>
     <StackLayout dock="top" height="90%">
-      <TextField v-model="bookData.id" hint="id"/>
-      <TextField v-model="bookData.title" hint="title"/>
-      <TextField v-model="bookData.author" hint="author"/>
-      <TextView v-model="bookData.description" hint="description"/>
-      <TextField text="ocena" hint="rate"/>
-      <TextField v-model="bookData.location" hint="location"/>
+      <StackLayout class="book-row">
+        <TextField v-model="bookData.id" hint="id" class="book-textfield"/>
+      </StackLayout>
+      <StackLayout class="book-row">
+        <TextField v-model="bookData.title" hint="title"  class="book-textfield"/>
+      </StackLayout>
+      <StackLayout class="book-row">
+        <TextField v-model="bookData.author" hint="author"  class="book-textfield"/>
+      </StackLayout>
+      <StackLayout class="book-row">
+        <TextView v-model="bookData.description" hint="description"  class="book-textfield"/>
+      </StackLayout>
+      <StackLayout class="book-row">
+        <TextField text="ocena" hint="rate"  class="book-textfield"/>
+      </StackLayout>
+      <StackLayout class="book-row">
+        <TextField v-model="bookData.location" hint="location"  class="book-textfield"/>
+      </StackLayout>
     </StackLayout>
     <StackLayout dock="bottom" row="1" orientation="horizontal">
-      <Button text="Zapisz" textWrap="true" width="95%" textAlignment="text" class="book-button" @tap="onAddEditButtonTap"></Button>
+      <Button text="Zapisz"
+        textWrap="true"
+        width="95%"
+        textAlignment="text"
+        class="book-button"
+        @tap="onAddEditButtonTap">
+      </Button>
     </StackLayout>
   </DockLayout>
 </Page>

@@ -11,7 +11,6 @@ export default new Vuex.Store({
         title: 'Book title',
         author: 'Author name',
         description: 'description',
-        location: 'Location name',
         state: 'BORROWED',
         creationDate: '2018-01-01T09:47:03Z',
         states: [
@@ -39,7 +38,6 @@ export default new Vuex.Store({
         title: 'Book title 2',
         author: 'Author name 2',
         description: 'description 2',
-        location: 'Location name 2',
         state: 'READED',
         creationDate: '2020-06-01T09:47:03Z',
         states: [

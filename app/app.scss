@@ -1,28 +1,45 @@
 @import '~@nativescript/theme/core';
+@import './theme/palette';
+@import './theme/guideline';
 
-.book-new-button {
-  background-color: #ffffff;
-  color: black;
+Page {
+  background-color: $blue-700;
+}
+
+.book-button {
+  background-color: $blue-100;
+  color: $white-300;
   width: 90%;
   height: 125;
-  font-size: 14;;
+  font-size: 18;
+  font-weight: bold;
 }
 
 .book-details {
-  margin: 5;
+  margin: $margin-item;
   padding: 15;
   android-elevation: 5;
+}
+
+.book-details-row {
+  margin: $margin-item;
+  padding: 5 15;
 }
 
 .label-light {
   font-weight: 200;
   font-size: 12;
-  color: #ddd;
+  color: $black-200;
+  margin-bottom: $margin-label;
+  padding-bottom: $margin-label;
 }
 
 .label-bold {
   font-size: 14;
   font-weight: bold;
+  color: $black-100;
+  margin-top: $margin-label;
+  padding-top: $margin-label;
 }
 
 .layout-half-width {
@@ -34,5 +51,20 @@
 }
 
 .book-details-status-list-item {
-  margin-left: 5;
+  margin-left: $margin-item;
+  margin-top: $margin-item;
+  padding: 5;
+}
+
+.book-row {
+  margin: $margin-item;
+}
+
+.book-textfield {
+  color: $black-100;
+  placeholder-color: $black-200;
+}
+
+.book-textfield:focus {
+  border-color: $blue-200;
 }

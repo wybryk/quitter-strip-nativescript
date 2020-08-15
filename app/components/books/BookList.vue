@@ -6,14 +6,14 @@
 
   <DockLayout>
     <ScrollView dock="top" height="90%">
-      <RadListView for="book in books" @itemTap="onItemTap" width="100%">
+      <ListView for="book in books" @itemTap="onItemTap" width="100%">
         <v-template>
           <Book-item :book="book"></Book-item>
         </v-template>
-      </RadListView>
+      </ListView>
     </ScrollView>
     <StackLayout dock="bottom">
-      <Button text="Nowy" textWrap="true" textAlignment="text" class="book-new-button" @tap="onAddButtonTap"></Button>
+      <Button text="Nowy" textWrap="true" textAlignment="text" class="book-button" @tap="onAddButtonTap"></Button>
     </StackLayout>
   </DockLayout>
 </Page>
