@@ -11,10 +11,18 @@
 
 android {
   defaultConfig {
+    applicationId = "org.nativescript.quitterstrip" 
     minSdkVersion 17
+    multiDexEnabled true
     generatedDensities = []
   }
   aaptOptions {
     additionalParameters "--no-version-vectors"
+  }
+  dexOptions {
+    javaMaxHeapSize "1024m"
+  }
+  project.ext {
+    googlePlayServicesVersion = "15.0.0"
   }
 }

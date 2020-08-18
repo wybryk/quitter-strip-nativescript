@@ -1,11 +1,13 @@
 import Vue from 'nativescript-vue';
 import Vuex from 'vuex';
+import firebase from 'nativescript-plugin-firebase';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    books: [
+    books: []
+    /* books: [
       {
         id: 1,
         title: 'Book title',
@@ -54,7 +56,7 @@ export default new Vuex.Store({
         ]
       }
     ],
-    bookStates: ['IN_LIBRARY', 'WANTED_TO_READ', 'READING_NOW', 'READED', 'BORROWED', 'REMOVED']
+    bookStates: ['IN_LIBRARY', 'WANTED_TO_READ', 'READING_NOW', 'READED', 'BORROWED', 'REMOVED'] */
   },
   mutations: {
     setBooks(state, books) {
@@ -72,12 +74,30 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    loadBooks: ({commit}) => {
+    loadBooks: ({ commit }) => {
       // Todo http
+      console.log('loadBooks');
+      firebase.firestore.collection('book').get({ source: "server" })
+          .then(result => {
+            console.log(result);
+            if (result) {              
+              commit('setBooks', result.map(book => book.data()));
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+          });
     },
     addBook: ({commit}, book) => {
       // Todo http
-      commit('addBook', book);
+      firebase.firestore.collection('book').add(book)
+      .then(result => {
+        console.log(result);
+        commit('addBook', result);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     },
     updateBook: ({commit}, book) => {
       // Todo http
