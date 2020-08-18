@@ -8,9 +8,6 @@
   <DockLayout>
     <StackLayout dock="top" height="90%">
       <StackLayout class="book-row">
-        <TextField v-model="bookData.id" hint="id" class="book-textfield"/>
-      </StackLayout>
-      <StackLayout class="book-row">
         <TextField v-model="bookData.title" hint="title"  class="book-textfield"/>
       </StackLayout>
       <StackLayout class="book-row">

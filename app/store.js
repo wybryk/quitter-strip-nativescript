@@ -1,11 +1,14 @@
 import Vue from 'nativescript-vue';
 import Vuex from 'vuex';
+import { Couchbase } from 'nativescript-couchbase-plugin';
+const db = new Couchbase('quitter-strip-db');
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    books: [
+    books: null
+    /* books: [
       {
         id: 1,
         title: 'Book title',
@@ -54,7 +57,8 @@ export default new Vuex.Store({
         ]
       }
     ],
-    bookStates: ['IN_LIBRARY', 'WANTED_TO_READ', 'READING_NOW', 'READED', 'BORROWED', 'REMOVED']
+    bookStates: ['IN_LIBRARY', 'WANTED_TO_READ', 'READING_NOW', 'READED', 'BORROWED', 'REMOVED'] */
+
   },
   mutations: {
     setBooks(state, books) {
@@ -69,19 +73,29 @@ export default new Vuex.Store({
           Object.assign(value, book);
         }
       });
+    },
+    deleteBook(state, bookId) {
+      state.books.splice(state.books.findIndex(value => value.id === bookId), 1);
     }
   },
   actions: {
     loadBooks: ({commit}) => {
-      // Todo http
+      commit('setBooks', db.query({select: []}));
     },
     addBook: ({commit}, book) => {
-      // Todo http
+      const bookId = db.createDocument(book);
+      book.id = bookId;
       commit('addBook', book);
     },
     updateBook: ({commit}, book) => {
-      // Todo http
+      db.updateDocument(book.id, book);
       commit('updateBook', book);
+    },
+    deleteBook: ({commit}, bookId) => {
+      const isDeleted = db.deleteDocument(bookId);
+      if (isDeleted) {
+        commit('deleteBook', bookId);
+      }
     }
   },
   getters: {
