@@ -5,7 +5,7 @@
   </ActionBar>
 
   <DockLayout>
-    <ScrollView dock="top" height="90%">
+    <ScrollView dock="top" height="90%" v-if="!!books && books.length > 0">
       <ListView for="book in books" @itemTap="onItemTap" width="100%">
         <v-template>
           <Book-item :book="book"></Book-item>
@@ -41,6 +41,9 @@ export default {
     onAddButtonTap() {
       this.$navigateTo(BookAddEdit);
     }
+  },
+  created() {
+    this.loadBooks();
   },
   components: {
     BookItem

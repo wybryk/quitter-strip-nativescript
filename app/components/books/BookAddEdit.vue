@@ -29,7 +29,6 @@
     <StackLayout dock="bottom" row="1" orientation="horizontal">
       <Button text="Zapisz"
         textWrap="true"
-        width="95%"
         textAlignment="text"
         class="book-button"
         @tap="onAddEditButtonTap">
