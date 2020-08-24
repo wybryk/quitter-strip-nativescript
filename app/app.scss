@@ -6,6 +6,14 @@ Page {
   background-color: $blue-700;
 }
 
+.horizontal-line {
+  width: 100%;
+  font-size: 19;
+  padding: 5 18;
+  border-width: 1 0 0 0;
+  border-color: $black-200;
+}
+
 .book-button {
   background-color: $blue-100;
   color: $white-300;
@@ -60,6 +68,11 @@ Page {
   margin: $margin-item;
 }
 
+.book-row-with-drop-down {
+  margin-left: 20;
+  margin-top: 10;
+}
+
 .book-textfield {
   color: $black-100;
   placeholder-color: $black-200;
@@ -68,4 +81,20 @@ Page {
 
 .book-textfield:focus {
   border-color: $blue-200;
+}
+
+.textfield-bottom-border {
+  width: 92%;
+  border-width: 1 0 0 0;
+  border-color: $black-300;
+  height: 0;
+}
+
+.item-drop-down{
+  font-size: 20;
+  height: 40;
+  padding: 4;
+  width: 100%;
+  border: 2;
+  border-color:#D3D3D3;
 }

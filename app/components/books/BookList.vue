@@ -1,7 +1,8 @@
 <template>
 <Page>
   <ActionBar>
-    <Label horizontalAlignment="center" text="Book List"/>
+    <ActionItem @tap="onTapShare" android.systemIcon="ic_menu" android.position="popup"/>
+    <Label horizontalAlignment="center" text="Book List" class="action-bar-title"/>
   </ActionBar>
 
   <DockLayout>

@@ -2,10 +2,8 @@
 <Page>
   <ActionBar>
     <NavigationButton @tap="$navigateBack()" android.systemIcon="ic_menu_back"/>
-    <Label text="Szczegóły książki" horizontalAlignment="center"/>
-    <ActionItem @tap="onEditButtonTap" android.position="right" ios.position="right">
-      <Label text="Edit" verticalAlignment="center"/>
-    </ActionItem>
+    <Label text="Szczegóły książki" horizontalAlignment="center" class="action-bar-title"/>
+    <ActionItem @tap="onEditButtonTap" android.systemIcon="ic_menu_edit" android.position="right"/>
   </ActionBar>
   <ScrollView>
     <StackLayout>
